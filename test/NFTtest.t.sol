@@ -11,6 +11,7 @@ contract NFTsTest is Test{
 
     address public USER = address(0);
     uint256 private constant INITIAL_BALANCE = 100 ether;
+    string public constant s_tokenURI = "ipfs://bafybeigrrzrsqcedeqzf3xlodqg2agicgk5f7eibgydojvvapjkct6ixcq.ipfs.dweb.link?filename=NFT.json";
 
     function setUp() public {
         DeployNFTs deployNFTs = new DeployNFTs();
@@ -22,14 +23,15 @@ contract NFTsTest is Test{
         console.log(basicNFTs.name());
         console.log(basicNFTs.symbol());
 
-        // String are array of bytes n we cannot compare the array of bytes.
+        // String are array of bytes n we cannot compare the array of bytes directly.
         // We will use abi.encodePacked(string);
         assert(keccak256(abi.encodePacked(basicNFTs.name())) == keccak256(abi.encodePacked(basicNFTs.symbol())));
     }
 
     function test_UserCanMintAndHaveBalance() public{
-        vm.prank(USER);
-        basicNFTs.mintNft("");
-        assert(keccak256(abi.encodePacked(basicNFTs.tokenURI(0))) == keccak256(abi.encodePacked("")));
+        vm.prank(msg.sender);
+        basicNFTs.mintNft(s_tokenURI);
+        assert(keccak256(abi.encodePacked(basicNFTs.tokenURI(0))) == keccak256(abi.encodePacked(s_tokenURI)));
+        // assert(basicNFTs.balanceOf(msg.sender) == 1);
     }
 }
