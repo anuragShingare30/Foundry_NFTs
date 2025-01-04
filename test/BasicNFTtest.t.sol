@@ -6,7 +6,7 @@ import {console} from "lib/forge-std/src/console.sol";
 import {DeployNFTs} from "script/Deploy.s.sol";
 import {BasicNFTs} from "src/BasicNFTs.sol";
 
-contract NFTsTest is Test{
+contract BaiscNFTsTest is Test{
     BasicNFTs basicNFTs;
 
     address public USER = address(0);
