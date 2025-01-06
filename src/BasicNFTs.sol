@@ -4,6 +4,21 @@ pragma solidity ^0.8.26;
 import {ERC721} from "lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.sol";
 import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
+
+/**
+ * @title Developing Basic NFTs collection using smart contract
+ * @author anurag shingare
+ * @notice This smart contract deploy a Basic NFT on sepolia/anvil using smart contract by providing the tokenURI(NFT metadata)
+ * @dev This smart contract includes:
+        a. This Creates the NFTs collection on wallet!
+        b. Using `mintNft` function you can mint the NFT by providing the tokenURI
+        c. `tokenURI` function retuurns the tokenURI of specified token id.
+        d. On, calling `mintNft()` your NFT will be deployed and will visible on your Metamask wallet / sepolia opensea.
+        e. Provide the deployed contract address and token id.
+ */
+
+
+
 contract BasicNFTs is ERC721, Ownable {
     // errors
 

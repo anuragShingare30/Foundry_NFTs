@@ -5,6 +5,17 @@ import {ERC721} from "lib/openzeppelin-contracts/contracts/token/ERC721/ERC721.s
 import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 import {Base64} from "lib/openzeppelin-contracts/contracts/utils/Base64.sol";
 
+
+/**
+ * @title Developing Dynamic NFTs collection using smart contract
+ * @author anurag shingare
+ * @notice This smart contract deploy Dynamic NFTs on sepolia/anvil using smart contract by providing the tokenURI(NFT metadata)
+ * @dev This smart contract includes:
+        a. The NFTs will be stored on-chain in base64 format!!!
+        b. 
+*/
+
+
 contract DynamicNFTs is ERC721, Ownable {
     // errors
     error DynamicNFTs_YouAreNotOwnerOfThisNFT();
@@ -51,24 +62,25 @@ contract DynamicNFTs is ERC721, Ownable {
         }
     }
 
+    // data:application/json;base64,
+    // data:image/svg+xml;base64,
     function _baseURI() internal view override returns (string memory) {
-        return "data:application/json:base64,";
+        return "data:application/json;base64,";
     }
 
     function DynaminTokenURI(
         uint256 _tokenId
-    ) public view returns (string memory) {
-        // if (ownerOf(_tokenId) != msg.sender) {
-        //     revert DynamicNFTs_YouAreNotOwnerOfThisNFT();
-        // }
+    ) public returns (string memory) {
         string memory s_name = name();
         string memory s_baseuri = _baseURI();
         string memory s_imageuri;
 
         if (s_NFTState[_tokenId] == NFTState.Bad) {
-            s_imageuri = s_BadMonkeyImageURI;
-        } else {
+            s_NFTState[_tokenId] = NFTState.Happy;
             s_imageuri = s_HappyMonkeyImageURI;
+        } else {
+            s_imageuri = s_BadMonkeyImageURI;
+            s_NFTState[_tokenId] = NFTState.Bad;
         }
 
         // Create the JSON string dynamically
@@ -96,7 +108,10 @@ contract DynamicNFTs is ERC721, Ownable {
                 )
             )
         );
-
         return tokenMetadata;
+    }
+
+    function getNFTState(uint256 _tokenId) public view returns(NFTState){
+        return s_NFTState[_tokenId];
     }
 }
