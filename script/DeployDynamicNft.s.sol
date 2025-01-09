@@ -5,6 +5,13 @@ import {Script} from "lib/forge-std/src/Script.sol";
 import {DynamicNFTs} from "src/DynamicNFTs.sol";
 import {Base64} from "lib/openzeppelin-contracts/contracts/utils/Base64.sol";
 
+/**
+    * This is the deploy script for our DynamicNFTs contract
+    * We have deploy our contract on anvil chain using
+        a. anvil private key
+        b. anvil default account
+*/
+
 contract DeployDynamicNfts is Script{
 
     string public s_happyImageUri = vm.readFile("img/happy.svg");

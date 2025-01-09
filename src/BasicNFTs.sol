@@ -10,11 +10,11 @@ import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
  * @author anurag shingare
  * @notice This smart contract deploy a Basic NFT on sepolia/anvil using smart contract by providing the tokenURI(NFT metadata)
  * @dev This smart contract includes:
-        a. This Creates the NFTs collection on wallet!
+        a. This Creates the NFTs collection on metamask!
         b. Using `mintNft` function you can mint the NFT by providing the tokenURI
-        c. `tokenURI` function retuurns the tokenURI of specified token id.
+        c. `tokenURI` function returns the tokenURI of specified token id.
         d. On, calling `mintNft()` your NFT will be deployed and will visible on your Metamask wallet / sepolia opensea.
-        e. Provide the deployed contract address and token id.
+        e. Provide the deployed contract address and tokenId to import NFT on metamask!
  */
 
 

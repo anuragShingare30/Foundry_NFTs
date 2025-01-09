@@ -11,8 +11,17 @@ import {Base64} from "lib/openzeppelin-contracts/contracts/utils/Base64.sol";
  * @author anurag shingare
  * @notice This smart contract deploy Dynamic NFTs on sepolia/anvil using smart contract by providing the tokenURI(NFT metadata)
  * @dev This smart contract includes:
-        a. The NFTs will be stored on-chain in base64 format!!!
-        b. 
+        a. mintDynamicNft() that will mint our NFT
+        b. DynamicallyFlipNFT() will flip the image of our NFT on the base of state.
+        c. _baseURI() is the token and Image URI starting endpoint (data:application/json;base64,)
+        d. DynaminTokenURI() this will return the tokenURI/NFT metadata
+        e. We are converting our NFT metadata into base64 format into TokenURI
+        
+
+ * @dev We are storing our NFT metadata and ImageURI on-chain
+        Our image svg is converted into base64 format
+
+ * @dev TokenId and deployed contract address is Imp. to import our NFT on metamask
 */
 
 

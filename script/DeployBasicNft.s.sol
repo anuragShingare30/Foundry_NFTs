@@ -4,6 +4,13 @@ pragma solidity ^0.8.26;
 import {Script} from "lib/forge-std/src/Script.sol";
 import {BasicNFTs} from "src/BasicNFTs.sol";
 
+/**
+    * This is the deploy script for our BasicNFTs contract
+    * We have deploy our contract on anvil chain using
+        a. anvil private key
+        b. account
+*/
+
 contract DeployBasicNFTs is Script{
 
     uint256 public constant ANVIL_PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
